@@ -1,0 +1,8 @@
+administer simple poll:
+  title: 'Administer Simple Poll'
+  description: 'Perform administration tasks for Simple Poll'
+  restrict access: true
+
+vote in polls:
+  title: 'Vote in polls'
+  description: 'Allow users to vote in polls'

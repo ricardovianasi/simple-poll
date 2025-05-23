@@ -1,0 +1,140 @@
+simple_poll.settings:
+  path: '/admin/config/content/simple-poll'
+  defaults:
+    _form: '\Drupal\simple_poll\Form\SimplePollSettingsForm'
+    _title: 'Simple Poll Settings'
+  requirements:
+    _permission: 'administer simple poll'
+
+simple_poll.list:
+  path: '/admin/content/simple-poll'
+  defaults:
+    _controller: '\Drupal\simple_poll\Controller\SimplePollController::pollList'
+    _title: 'Polls'
+  requirements:
+    _permission: 'administer simple poll'
+
+simple_poll.add:
+  path: '/admin/content/simple-poll/add'
+  defaults:
+    _form: '\Drupal\simple_poll\Form\PollForm'
+    _title: 'Add poll'
+  requirements:
+    _permission: 'administer simple poll'
+
+simple_poll.edit:
+  path: '/admin/content/simple-poll/{poll}/edit'
+  defaults:
+    _form: '\Drupal\simple_poll\Form\PollForm'
+    _title: 'Edit poll'
+  requirements:
+    _permission: 'administer simple poll'
+
+simple_poll.delete:
+  path: '/admin/content/simple-poll/{poll}/delete'
+  defaults:
+    _form: '\Drupal\simple_poll\Form\PollDeleteForm'
+    _title: 'Delete poll'
+  requirements:
+    _permission: 'administer simple poll'
+  options:
+    parameters:
+      poll:
+        type: entity:simple_poll
+
+simple_poll.option_list:
+  path: '/admin/content/simple-poll/{poll}/options'
+  defaults:
+    _controller: '\Drupal\simple_poll\Controller\SimplePollController::optionList'
+    _title: 'Poll options'
+  requirements:
+    _permission: 'administer simple poll'
+  options:
+    parameters:
+      poll:
+        type: entity:simple_poll
+
+simple_poll.option_add:
+  path: '/admin/content/simple-poll/{poll}/options/add'
+  defaults:
+    _form: '\Drupal\simple_poll\Form\PollOptionForm'
+    _title: 'Add poll option'
+  requirements:
+    _permission: 'administer simple poll'
+  options:
+    parameters:
+      poll:
+        type: entity:simple_poll
+
+simple_poll.option_edit:
+  path: '/admin/content/simple-poll/{poll}/options/{option}/edit'
+  defaults:
+    _form: '\Drupal\simple_poll\Form\PollOptionForm'
+    _title: 'Edit poll option'
+  requirements:
+    _permission: 'administer simple poll'
+  options:
+    parameters:
+      poll:
+        type: entity:simple_poll
+      option:
+        type: entity:simple_poll_option
+
+simple_poll.option_delete:
+  path: '/admin/content/simple-poll/{poll}/options/{option}/delete'
+  defaults:
+    _form: '\Drupal\simple_poll\Form\PollOptionDeleteForm'
+    _title: 'Delete poll option'
+  requirements:
+    _permission: 'administer simple poll'
+  options:
+    parameters:
+      poll:
+        type: entity:simple_poll
+      option:
+        type: entity:simple_poll_option
+
+
+simple_poll.results:
+  path: '/admin/content/simple-poll/{poll}/results'
+  defaults:
+    _controller: '\Drupal\simple_poll\Controller\SimplePollController::pollResults'
+    _title: 'Poll Results'
+  requirements:
+    _permission: 'administer simple poll'
+  options:
+    parameters:
+      poll:
+        type: entity:simple_poll
+
+simple_poll.vote:
+  path: '/simple-poll/{poll}/vote'
+  defaults:
+    _controller: '\Drupal\simple_poll\Controller\SimplePollController::vote'
+    _title: 'Vote'
+  requirements:
+    _permission: 'vote in polls'
+  options:
+    parameters:
+      poll:
+        type: entity:simple_poll
+
+simple_poll.display:
+  path: '/simple-poll/{poll}/view'
+  defaults:
+    _controller: '\Drupal\simple_poll\Controller\SimplePollController::displayPoll'
+    _title_callback: '\Drupal\simple_poll\Controller\SimplePollController::pollTitle'
+  requirements:
+    _permission: 'vote in polls'
+  options:
+    parameters:
+      poll:
+        type: entity:simple_poll
+
+simple_poll.public_list:
+  path: '/simple-poll'
+  defaults:
+    _controller: '\Drupal\simple_poll\Controller\SimplePollController::publicPollList'
+    _title: 'Votações disponívies'
+  requirements:
+    _permission: 'vote in polls'

@@ -1,0 +1,4 @@
+services:
+  simple_poll.poll_service:
+    class: Drupal\simple_poll\Service\SimplePollService
+    arguments: [ '@database', '@entity_type.manager', '@config.factory', '@state' ]

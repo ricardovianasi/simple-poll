@@ -1,0 +1,13 @@
+simple_poll.settings:
+  title: 'Simple Poll Settings'
+  description: 'Configure how polls behave.'
+  route_name: simple_poll.settings
+  parent: simple_poll.admin_config
+  weight: 0
+
+simple_poll.admin_config:
+  title: 'Polls'
+  description: 'Settings for custom polls'
+  route_name: simple_poll.settings
+  parent: system.admin_config
+  weight: 100

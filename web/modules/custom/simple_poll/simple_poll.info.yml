@@ -1,0 +1,8 @@
+name: 'Simple Poll'
+type: module
+description: 'A simple polling system for Drupal 10.'
+core_version_requirement: ^10
+package: 'Custom'
+dependencies:
+  - rest
+  - restui

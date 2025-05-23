@@ -1,0 +1,5 @@
+name: simple-poll-lando
+recipe: drupal10
+config:
+  webroot: web
+  database: mysql

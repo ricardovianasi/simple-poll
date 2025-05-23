@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * @file
+ * Contains simple_poll.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function simple_poll_help($route_name, RouteMatchInterface $route_match)
+{
+  switch ($route_name) {
+    case 'help.page.simple_poll':
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Simple Poll module allows administrators to create polls that users can vote on.') . '</p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function simple_poll_theme()
+{
+  return [
+    'simple_poll' => [
+      'variables' => [
+        'poll' => NULL,
+        'options' => [],
+        'results' => NULL,
+        'show_results' => FALSE,
+        'voting_enabled' => TRUE,
+        'voted' => FALSE,
+      ],
+      'template' => 'simple-poll',
+    ],
+    'simple_poll_results' => [
+      'variables' => [
+        'poll' => NULL,
+        'results' => [],
+        'total_votes' => 0,
+      ],
+      'template' => 'simple-poll-results',
+    ],
+    'simple_poll_list' => [
+      'variables' => [
+        'polls' => [],
+        'voting_enabled' => TRUE,
+      ],
+      'template' => 'simple-poll-list',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function simple_poll_page_attachments(array &$attachments)
+{
+  $attachments['#attached']['library'][] = 'simple_poll/simple_poll';
+}
